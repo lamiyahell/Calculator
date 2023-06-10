@@ -22,22 +22,34 @@ public class CalculatorController {
     }
 
     @GetMapping("/plus")
-    public String answerPlus(@RequestParam("num1") int numb1, @RequestParam("num2") int numb2) {
-        return calculatorService.answerPlus(numb1,numb2);
+    public String answerPlus(@RequestParam int num1, @RequestParam int num2) {
+        int result = calculatorService.answerPlus(num1,num2);
+        return textForm(num1, num2, result, '+');
     }
 
     @GetMapping("/minus")
-    public String answerMinus(@RequestParam("num1") int numb1, @RequestParam("num2") int numb2) {
-        return calculatorService.answerMinus(numb1,numb2);
+    public String answerMinus(@RequestParam int num1, @RequestParam int num2) {
+        int result = calculatorService.answerMinus(num1,num2);
+        return textForm(num1, num2, result, '-');
     }
 
     @GetMapping("/multiply")
-    public String answerMulriply(@RequestParam("num1") int numb1, @RequestParam("num2") int numb2) {
-        return calculatorService.answerMultiply(numb1,numb2);
+    public String answerMultiply(@RequestParam int num1, @RequestParam int num2) {
+        int result = calculatorService.answerMultiply(num1,num2);
+        return textForm(num1, num2, result, '*');
     }
 
     @GetMapping("/divide")
-    public String answerDivide(@RequestParam("num1") int numb1, @RequestParam("num2") int numb2) {
-        return calculatorService.answerDivide(numb1,numb2);
+    public String answerDivide(@RequestParam int num1, @RequestParam int num2) {
+        if (num2 == 0) {
+            return "Второй аргумент 0, на 0 делить нельзя!";
+        }
+
+        int result = calculatorService.answerDivide(num1,num2);
+        return textForm(num1, num2, result, '/');
+    }
+
+    private String textForm(int num1, int num2, int result, char action) {
+        return String.format("%d %c %d = %d", num1,action,num2,result);
     }
 }

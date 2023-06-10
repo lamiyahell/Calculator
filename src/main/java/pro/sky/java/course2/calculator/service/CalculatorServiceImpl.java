@@ -9,20 +9,16 @@ public class CalculatorServiceImpl implements CalculatorService {
         return "Добро пожаловать в калькулятор";
     }
 
-    public String answerPlus(int numb1, int numb2) {
-        int sum = numb1+numb2;
-        return numb1 + " + " + numb2 + " = " + sum;
+    public int answerPlus(int num1, int num2) {
+        return num1 + num2;
     }
-    public String answerMinus(int numb1, int numb2) {
-        int dif = numb1-numb2;
-        return numb1 + " - " + numb2 + " = " + dif;
+    public int answerMinus(int num1, int num2) {
+        return num1 - num2;
     }
-    public String answerMultiply(int numb1, int numb2) {
-        int multiply = numb1*numb2;
-        return numb1 + " * " + numb2 + " = " + multiply;
+    public int answerMultiply(int num1, int num2) {
+        return num1 * num2;
     }
-    public String answerDivide(int numb1, int numb2) {
-        int div = numb1/numb2;
-            return numb1 + " / " + numb2 + " = " + div;
+    public int answerDivide(int num1, int num2) {
+        return num1 / num2;
     }
 }
